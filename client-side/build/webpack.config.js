@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin') // html模板插件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 清空webpack打包的内容插件
-console.log(CleanWebpackPlugin)
 
 module.exports = {
   entry: './src/index.ts',

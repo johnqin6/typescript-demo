@@ -1,3 +1,1 @@
-let num: number = 123
-
-document.title = 'johnqin'
+import './example/basic-type'
