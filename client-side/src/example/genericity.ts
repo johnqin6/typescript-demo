@@ -95,12 +95,16 @@ function loggingIdentity2<T extends Lengthwise>(arg: T): T {
 loggingIdentity2({ length: 10, value: 3 })
 
 // 在泛型约束中使用类型参数
-// function getProperty(obj: T, key: K){
+// function getProperty<T, K>(obj: T, key: K): [T, K][]{
 //   return obj[key];
 // }
 // let x = { a: 1, b: 2, c: 3};
 // getProperty(x, 'a')
 // getProperty(x, 'm')
+const getArray = <T, U>(arg1: T, arg2: U, times: number): Array<[T, U]>[] => {
+  return new Array(times).fill([arg1, arg2])
+}
+console.log(getArray('a', 1, 3))
 
 // 在泛型里使用类类型
 function create<T>(c: {new(): T; }): T {
@@ -116,14 +120,14 @@ class ZooKeeper {
 class Animal {
   numLegs: number = 0;
 }
-class Bee extends Animal {
-  keeper: BeeKeeper;
-}
-class Lion extends Animal {
-  keeper: ZooKeeper;
-}
-function createInstance<A extends Animal>(c: new () => A): A {
-  return new c();
-}
-createInstance(Lion).keeper.nametag;  // typechecks!
-createInstance(Bee).keeper.hasMask;   // typechecks!
+// class Bee extends Animal {
+//   keeper: BeeKeeper;
+// }
+// class Lion extends Animal {
+//   keeper: ZooKeeper;
+// }
+// function createInstance<A extends Animal>(c: new () => A): A {
+//   return new c();
+// }
+// createInstance(Lion).keeper.nametag;  // typechecks!
+// createInstance(Bee).keeper.hasMask;   // typechecks!
