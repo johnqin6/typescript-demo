@@ -95,12 +95,12 @@ function loggingIdentity2<T extends Lengthwise>(arg: T): T {
 loggingIdentity2({ length: 10, value: 3 })
 
 // 在泛型约束中使用类型参数
-// function getProperty<T, K>(obj: T, key: K): [T, K][]{
-//   return obj[key];
-// }
-// let x = { a: 1, b: 2, c: 3};
-// getProperty(x, 'a')
-// getProperty(x, 'm')
+function getProperty<T, K extends keyof T>(obj: T, key: K){
+  return obj[key];
+}
+let x = { a: 1, b: 2, c: 3};
+getProperty(x, 'a')
+// getProperty(x, 'm') x
 const getArray = <T, U>(arg1: T, arg2: U, times: number): Array<[T, U]>[] => {
   return new Array(times).fill([arg1, arg2])
 }
